@@ -1,11 +1,11 @@
 {
-  "client": {
-    "email": "firebase-adminsdk-jtgpj@chau02-b4019.iam.gserviceaccount.com"
+  "project": {
+    "id": "chau02-b4019"
   },
   "private": {
     "key": "-----BEGIN PRIVATE KEY-----\\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDVJ0tl8zdKBJd/\\n1BoRe55xba119Lz8PjnRnpkywZrI945Cj6BcKW0VYm8Cz+T469qbJWn4ryfrYugJ\\nnBvaRgliospoZbXFAGTruJMLQgSW7slebgEPQd82ocVO81gzf4akf6ZSR1nGCxoq\\nWGQUUQY6XjYBAoDQ3m4jL8zFPilVTGsKwLjt/+qCPTjO3nmUkAui+eFL6A1jJ11b\\n2XsV0XpYmV+9KexMOmNXVmcVoeo6FTzZjRsUyKobiohd8tEYHJDL4XP4XukgJ9zw\\n6LaaVmQVUjuSHFYBkUCoEmaeJiBfOYMZGnUwqgExPcreKGTZ0ssy94mlV6WXa0RZ\\nggwL4IU7AgMBAAECggEAIHwwnYUHtBwnCrBEmM2CRD825Hc8JiVFopDNQFMJR/+S\\nispg4ireGRg7Wu5cMyOe2W5GTERFjTYxruU/yXBLFeFBf8+geDmrJ9Gld13EXUxf\\nHCkfuDeN0UGuVG35zz9sQb3Cl1+QawJeJn36Iq6GiHa7PEQpZavAlVQ/nP/wRLNt\\nmJrZ4cyiiXGo7ZkEVJXd91VAmaYMCXhxW7Vy/e7CF92H5gW6QfwobDCDBdgYsWD8\\nyo0mmN83rR02xxscGhqTG4x3w4Efcf+AGgf9kAU1M51u4+5/U5o8zsXKuTsWO6as\\nJ+L6K3Ifv0rTzZCJZqzR3qq8tB4vsei9cvHWm69xQQKBgQDrQRn8bL1uhiXRkcpE\\nNT+GJ+mlB+SLcLtpAo+Crz1MtcLgCFj2H22DAn1BeIueFaC8B+YismSsgyBg9S7l\\nd4aoDcJkql/K6oJqx85yxkOi4rhEFZOWgmfOzcR6iBexvp5840Pniz/5sgKtGa+c\\nZJTigXq0EWaTbtC5YFJh/FtnwwKBgQDn80Oipwa0a/BiO+a9yhZTUPJM5w9baSGN\\ng6lZm75Qh3lPvKs52PohODhpN+tgtjMj8eWvVgqTk/u9SipCOmdvZ0uSiOyw1wtn\\nDH8ONWYtVp871ZdTR/bj71uE+Rk19uggY/7lCUOalMwbZj6Tk4gfJWz1mCxvwnrG\\n9RqBN6gNKQKBgQCoiYg7Xg/MKZDYdbDJcrhivR9W2rOx7f5lea8kebTZyvGknHZX\\nRSaoj9T6XYjwpR/09Ve7DcCwEnTU4XJKdHnk1Y6pnaFo9t6d7y0I7t8vx2spY6fL\\nUPtbnfCfs/X9oclbQVm5fPpFQXFHX7p+uVQsfYRRkpHBF8eytr3ucuNtDwKBgQCi\\nA+Cdb0+WnMKmyzKMJOldPvBQWSD398IxB+M1rTzNISPSV3W+jVmB9LQqgp3NytaD\\n6AZIZ7Axjy9K88/6vLLdNOirrSqvBzZ2v1rMQO5jAttsvu/Zgy3n3pwtkJVUhWd0\\noIQ91S+8fOzowo05Jdbx8oFeNvHrCowaBsCBu6+NqQKBgHPkY4a/LTtgrHs7+hEL\\njIKDk81mcTPn9RGahrvErnh082anvmcFXeUXT1N1+/xCxHzzXqQXtaAn78Rg+bm4\\nQxRtyYf6KW/3YQJ2QEynAjU/5+Yyp+FTvC469ELeAMNDzzdVw1AIjqV11jhLVGb+\\nFKg+bDnYBot0sjHy2imheo5i\\n-----END PRIVATE KEY-----\\n"
   },
-  "project": {
-    "id": "chau02-b4019"
+  "client": {
+    "email": "firebase-adminsdk-jtgpj@chau02-b4019.iam.gserviceaccount.com"
   }
 }

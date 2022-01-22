@@ -1,6 +1,9 @@
 /* eslint-disable */
-import {Response} from "express";
-import {db} from "../config/firebase";
+import 'dotenv/config'
+import {Response,Request} from "express";
+import {db, auth} from "../config/firebase";
+import * as nodemailer from "nodemailer";
+
 
 
 type EntryType = {
@@ -9,12 +12,17 @@ type EntryType = {
 };
 
 
-type Request = {
+type Requests = {
   body: EntryType,
   params: {entryId: string};
 };
 
-const getAllResquest = async (req: Request, res: Response) => {
+
+type User = {
+  youtubeLink:string,
+}
+
+const getAllResquest = async (req: Requests, res: Response) => {
   try {
     const lists: EntryType[] = [];
     const querysnapsnot = await db.collection("Category Uploads").get();
@@ -53,7 +61,7 @@ const BankEntry = [
 ];
 
 
-const banklistapi = async (req: Request, res: Response) => {
+const banklistapi = async (req: Requests, res: Response) => {
     return res.status(200).json(BankEntry);
 };
 
@@ -110,9 +118,61 @@ const foodcategoryapilist = [
     {id: "19", name: "beans", code: "07"},
 ];
 
-const foodcategory = async (req: Request, res: Response) => {
+const foodcategory = async (req: Requests, res: Response) => {
     return res.status(200).json(foodcategoryapilist);
 };
 
-export {getAllResquest, banklistapi, foodcategory};
+
+
+const SendPasswordRestLink = async (req: Request,res: Response) => {
+
+  let errand: string;
+  try{
+      let e:User = req.body;
+      auth.generatePasswordResetLink(e.youtubeLink)
+                  .then(response => {
+      
+                      var smtpConfig = {
+                              host: process.env.HOST,
+                              port: 465,
+                              secure: true, 
+                              auth: {
+                                  user: process.env.USER,
+                                  pass: process.env.PASSWORD
+                              }
+                          };
+
+                      const transport = nodemailer.createTransport(smtpConfig);
+
+                      var mailOptions = {
+                          from: process.env.USER,
+                          to:e.youtubeLink,
+                          subject:"Chaü Password Reset Link",
+                          text: response.toString(),
+                      };
+
+                      transport.sendMail(mailOptions,function(error, info){
+                          if (error) {
+                              errand = error.toString();
+                          } else {
+                              errand = 'Email sent: ' + info.response;
+                          }
+
+                          return res.status(200).json(errand);
+
+                          });
+
+                       
+
+                    }).catch(err => {
+                     return res.status(500).json(err);
+                  })      
+          }catch(err) {
+              return res.status(500).json(err);
+          }   
+}
+
+
+
+export {getAllResquest, banklistapi, foodcategory,SendPasswordRestLink};
 

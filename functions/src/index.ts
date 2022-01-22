@@ -1,8 +1,8 @@
 /* eslint-disable */
 import * as functions from "firebase-functions";
 import * as express from "express";
-import {getAllResquest,banklistapi,foodcategory} from "./Models/model_data";
-import {LeanAddPost,LeanGetAllPost,LeanUpdatePost,LeanGetPostByCategory,HomeList} from "./Models/learn_data"
+import {getAllResquest,banklistapi,foodcategory,SendPasswordRestLink} from "./Models/model_data";
+import {LeanAddPost,LeanGetAllPost,LeanUpdatePost,LeanGetPostByCategory,HomeList,LeanGetPostByTab} from "./Models/learn_data"
 import * as corsmodule from "cors";
 
 
@@ -15,6 +15,7 @@ appCat.use(cors);
 appCat.get("/Snap_cat", getAllResquest);
 appCat.get("/Banklist", banklistapi);
 appCat.get("/food_category", foodcategory);
+appCat.post("/SendPasswordRestLink",SendPasswordRestLink);
 exports.appCat = functions.https.onRequest(appCat);
 
 
@@ -45,8 +46,10 @@ Zlearner.get("/LeanGetAllPost",LeanGetAllPost)
 Zlearner.post("/LeanGetPostByCategory",LeanGetPostByCategory);
 Zlearner.post("/LeanUpdatePost",LeanUpdatePost);
 Zlearner.post("/HomeList",HomeList);
+Zlearner.post("/LeanGetPostByTab",LeanGetPostByTab);
 exports.Zlearner = functions.https.onRequest(Zlearner);
 
+//End of Learn
 
 
 

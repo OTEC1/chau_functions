@@ -1,21 +1,22 @@
 /* eslint-disable */
+import 'dotenv/config'
 import {Response,Request} from "express";
 import { firestore } from "firebase-admin";
 import {db} from "../config/firebase";
 
 
 type Programming={
-
     title:string,
     writeUp:string,
     doc_id:string,
     img_url:string,
     views:number,
     video_url:string
-    timestamp:number,
+    timestamp:any,
     date_time:string,
     youtubeLink: string,
     category:string,
+    tab:string,
 }
 
 
@@ -25,8 +26,9 @@ export const LeanAddPost = async (req: Request,res: Response) => {
 
     try{
         let i: Programming = req.body;
-        const e = db.collection("ZLeanAddPost").doc();
+        const e = db.collection("zLeanAddPost").doc();
         i.doc_id = e.id;
+        i.timestamp = firestore.Timestamp.now();
         e.set(i);    
         return res.status(200).json(e.id);
       
@@ -42,7 +44,7 @@ export const LeanGetAllPost = async (req: Request,res: Response) => {
 
     try{
         const service: Programming[] = [];
-        const querysnapsnot = await db.collection("ZLeanAddPost").get();
+        const querysnapsnot = await db.collection("zLeanAddPost").orderBy('timestamp', 'desc').get();
         querysnapsnot.forEach((doc: any) => service.push(doc.data()));
     
           return res.status(200).json(service);
@@ -61,7 +63,7 @@ export const LeanUpdatePost = async (req: Request,res: Response) => {
     try{
         var indicator  = 0;
         const e: Programming =  req.body;
-        const querysnapsnot =  db.collection("ZLeanAddPost").doc(e.doc_id);
+        const querysnapsnot =  db.collection("zLeanAddPost").doc(e.doc_id);
             if((await querysnapsnot.get()).exists)
                  querysnapsnot.update("views",firestore.FieldValue.increment(1))
                         if((await querysnapsnot.get()).updateTime)
@@ -81,7 +83,7 @@ export const LeanGetPostByCategory = async (req: Request,res: Response) => {
     try{
         const e: Programming =  req.body;
         const service: Programming  [] = [];
-        const querysnapsnot =   db.collection("ZLeanAddPost");
+        const querysnapsnot =   db.collection("zLeanAddPost");
         const allCapitalsRes = await querysnapsnot.where('category', '==', e.category).get();
         allCapitalsRes.forEach((doc:any) => service.push(doc.data()))
             
@@ -116,6 +118,41 @@ export const  HomeList = async (req:Request, res:Response) => {
     }catch(err) {
         return res.status(500).json(err);
     }
+}
+
+
+
+
+export const LeanGetPostByTab = async (req: Request,res: Response) => {
+    try{
+        const e: Programming =  req.body;
+        const service: Programming  [] = [];
+        const querysnapsnot =   db.collection("zLeanAddPost");
+        const allCapitalsRes = await querysnapsnot.where('tab', '==', e.tab).get();
+        allCapitalsRes.forEach((doc:any) => service.push(doc.data()))
+            
+          return res.status(200).json(service);
+      
+        }catch(err) {
+            return res.status(500).json(err);
+        }   
+}
+
+
+
+export const LeanGetPostByMostViewed = async (req: Request,res: Response) => {
+    try{
+        const e: Programming =  req.body;
+        const service: Programming  [] = [];
+        const querysnapsnot =   db.collection("zLeanAddPost");
+        const allCapitalsRes = await querysnapsnot.where('tab', '==', e.tab).get();
+        allCapitalsRes.forEach((doc:any) => service.push(doc.data()))
+            
+        return res.status(200).json(service);
+      
+        }catch(err) {
+            return res.status(500).json(err);
+        }   
 }
 
 
