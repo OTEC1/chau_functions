@@ -2,7 +2,7 @@
 import * as functions from "firebase-functions";
 import * as express from "express";
 import {getAllResquest,banklistapi,foodcategory,SendPasswordRestLink} from "./Models/model_data";
-import {LeanAddPost,LeanGetAllPost,LeanUpdatePost,LeanGetPostByCategory,HomeList,LeanGetPostByTab} from "./Models/learn_data"
+import {LeanAddPost,LeanGetAllPost,LeanUpdatePost,LeanGetPostByCategory,HomeList,LeanGetPostByTab,Learnvisitcount,LearnGetvisitcount} from "./Models/learn_data"
 import * as corsmodule from "cors";
 
 
@@ -47,6 +47,8 @@ Zlearner.post("/LeanGetPostByCategory",LeanGetPostByCategory);
 Zlearner.post("/LeanUpdatePost",LeanUpdatePost);
 Zlearner.post("/HomeList",HomeList);
 Zlearner.post("/LeanGetPostByTab",LeanGetPostByTab);
+Zlearner.post("/Learnvisitcount",Learnvisitcount)
+Zlearner.get("/LearnGetvisitcount",LearnGetvisitcount)
 exports.Zlearner = functions.https.onRequest(Zlearner);
 
 //End of Learn

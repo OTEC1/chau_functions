@@ -156,3 +156,78 @@ export const LeanGetPostByMostViewed = async (req: Request,res: Response) => {
 }
 
 
+
+type VisitCount = {
+    count:number,
+    date:any,
+    doc_id:string,
+    stamp:any,
+}
+
+
+
+
+function stamp(){
+    var dt = new Date(firestore.Timestamp.now().toDate().toUTCString()).toString()
+    var sub = dt.substring(0,dt.indexOf(":")-2).trimEnd();
+    return sub;
+
+}
+
+
+
+export const Learnvisitcount = async (req: Request,res: Response) => {
+         try{
+             let e: VisitCount = req.body;
+             let time = db.collection("zLearnVisitorTrack").listDocuments();
+             const day =  db.collection("zLearnVisitorTrack").doc();
+             e.date = stamp();
+             e.stamp = firestore.Timestamp.now();
+             if((await time).length <= 0){
+                  e.doc_id = day.id;
+                  day.set(e);
+             }else{
+                  let current = await  db.collection("zLearnVisitorTrack").orderBy("stamp","desc").limit(1).get();  
+                  current.forEach((doc: any) => e = (doc.data()))  
+                    if(stamp() === e.date)
+                           db.collection("zLearnVisitorTrack").doc(e.doc_id).update("count",firestore.FieldValue.increment(1))
+                    else{
+                        let e: VisitCount = req.body;
+                        e.date = stamp();
+                        e.stamp = firestore.Timestamp.now();
+                        e.doc_id = day.id;
+                        day.set(e);
+                    }
+                }
+
+               return res.json({
+                   message:   "OK"
+               })
+
+             }
+        catch (err) { 
+            return res.json({
+                message: err as Error
+            })
+        }
+    }
+
+
+
+
+export const LearnGetvisitcount  = async (req: Request,res: Response) => {
+    try{
+        let e: VisitCount  [] = [];
+        let current = await  db.collection("zLearnVisitorTrack").orderBy("stamp","desc").limit(500).get();  
+        current.forEach((doc: any) => e.push(doc.data()))  
+        return  res.json({
+            message: e
+          })
+       }catch(err){
+
+       return  res.json({
+            message: err as Error
+        })
+    }
+};
+
