@@ -6,6 +6,7 @@ import * as nodemailer from "nodemailer";
 
 
 
+
 type EntryType = {
   category: string,
   imgurl: string,
@@ -162,8 +163,6 @@ const SendPasswordRestLink = async (req: Request,res: Response) => {
 
                           });
 
-                       
-
                     }).catch(err => {
                      return res.status(500).json(err);
                   })      
@@ -171,6 +170,12 @@ const SendPasswordRestLink = async (req: Request,res: Response) => {
               return res.status(500).json(err);
           }   
 }
+
+
+
+
+
+
 
 
 

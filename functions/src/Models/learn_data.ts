@@ -100,9 +100,8 @@ export const  HomeList = async (req:Request, res:Response) => {
 
         let e : Programming = req.body;
         let list:string [] = [];
-
         if(e.views === 1){
-            list = ["Select an Option", "AWS Cloud Services","FaceBook for Business API","Learn Microsoft Azure", "Explore Blockchain Technology"];
+            list = ["Select an Option", "AWS Cloud Services", "Explore Blockchain Technology","Bitcoin rate", "NFT trends", "Gift card","Ethereum","DeFi trends","Coinbase"];
         }else
             if(e.views === 2)
                 list = ["Select an Option", "Java", "Python", "React JS", "Android studio", "Git bash","C","Ruby","C#","HTML","CSS"]
